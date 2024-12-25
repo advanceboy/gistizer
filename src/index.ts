@@ -65,13 +65,6 @@ class GitHubCode {
 				this.sliceEnd = parseInt(matSlice[3]);
 			}
 		}
-		if (this.sliceStart != 1 || !isNaN(this.sliceEnd)) {
-			if (this.sliceStart === this.sliceEnd || isNaN(this.sliceEnd)) {
-				this.blobUrl += '#L' + this.sliceStart;
-			} else {
-				this.blobUrl += '#L' + this.sliceStart + '-L' + this.sliceEnd;
-			}
-		}
 		const optFooter = url.searchParams.get("footer");
 		if (optFooter) {
 			if (optFooter === "minimal") {
@@ -174,6 +167,13 @@ class GitHubCode {
 
 		const sliceStart = this.sliceStart >= 0 ? this.sliceStart : codeArray.length + this.sliceStart;
 		const sliceEnd = this.sliceEnd >= 0 ? this.sliceEnd : codeArray.length + this.sliceEnd;
+		if (sliceStart != 1 || !isNaN(this.sliceEnd)) {
+			if (sliceStart === sliceEnd || isNaN(sliceEnd)) {
+				this.blobUrl += '#L' + sliceStart;
+			} else {
+				this.blobUrl += '#L' + sliceStart + '-L' + sliceEnd;
+			}
+		}
 		if (Number.isNaN(this.sliceEnd) && this.sliceStart != 1) {
 			return codeArray.slice(sliceStart - 1);
 		} else if (!Number.isNaN(this.sliceEnd)) {
