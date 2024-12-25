@@ -8,7 +8,7 @@ An [Cloudflare Workers](https://www.cloudflare.com/ja-jp/developer-platform/prod
 <script defer src="https://gistizer.super-hall-effd.workers.dev/github/$user/$repository/blob/$branch/$path"></script>
 ```
 
-### options
+### Options
 
 |param|example|explanation|
 |---|---|---|
@@ -22,8 +22,12 @@ An [Cloudflare Workers](https://www.cloudflare.com/ja-jp/developer-platform/prod
 | `skin` | `skin=default` | See the [skin gallery](https://raw.githack.com/google/code-prettify/master/styles/index.html) of the [code-prettify](https://github.com/googlearchive/code-prettify). Behaviour when different skins are used on the same page is undefined. (default: `sons-of-obsidian`) |
 | `fetchfrom` | `fetchfrom=github`, `fetchfrom=jsdelivr` | CDN from which source code is obtained (default: `jsdelivr`) |
 
-### example
+### Example
 
 ```html
 <script defer src="https://gistizer.super-hall-effd.workers.dev/github/advanceboy/gistizer/blob/main/README.md?slice=1:&footer=minimal&skin=default"></script>
 ```
+
+## 日本語の解説記事
+
+[GitHub 上のソースコードの一部を Gist のように埋め込む Cloudflare Workers | Aqua Ware つぶやきブログ](https://aquasoftware.net/blog/?p=2268)
