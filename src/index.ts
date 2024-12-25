@@ -6,11 +6,11 @@ export default {
 		}
 		try {
 			const ghCode = new GitHubCode(url);
-			return new Response(await ghCode.getBody(), { headers: new Headers({ "Content-Type": "text/javascript" }) });
+			return new Response(await ghCode.getBody(), { headers: new Headers({ "Content-Type": "text/javascript; charset=UTF-8" }) });
 		} catch (e) {
 			const message = `${e}`;
 			const errBody = `(function() { document.currentScript.insertAdjacentHTML("afterend", ${ JSON.stringify(message) }) })();`;
-			return new Response(errBody, { status: 200, headers: new Headers({ "Content-Type": "text/javascript" }) });
+			return new Response(errBody, { status: 200, headers: new Headers({ "Content-Type": "text/javascript; charset=UTF-8" }) });
 		}
 	},
 } satisfies ExportedHandler<Env>;
@@ -148,7 +148,7 @@ class GitHubCode {
 				`	// /div.gistizer-file, /div.gistizer-gist
 			) });
 			if ('PR' in window) { window.PR.prettyPrint(); }
-		})();`;
+})();`;
 	}
 	async fetchCodesEscaped() {
 		return GitHubCode.encodeHtml((await this.fetchCodes()).join("\n"));
